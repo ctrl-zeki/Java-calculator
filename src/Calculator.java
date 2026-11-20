@@ -110,12 +110,27 @@ public class Calculator {
                         }else if(buttonValue ==  "%"){
                             double numDisplay = Double.parseDouble(displayLabel.getText());
                             numDisplay = numDisplay/100;
-                            displayLabel.setText(removeZeroDecimal(numDisplay) + "%");
+                            displayLabel.setText(removeZeroDecimal(numDisplay));
                         }
                     }else if (Arrays.asList(rightSymbols).contains(buttonValue)){
                             if(buttonValue == "="){
+                                if(A != null){
+                                    B = displayLabel.getText();
+                                    double numA =  Double.parseDouble(A);
+                                    double numB = Double.parseDouble(B);
 
-                            }else if(buttonValue.contains("+-×÷")){
+                                    if(Operator == "+"){
+                                        displayLabel.setText(removeZeroDecimal(numA + numB));
+                                    }else if(Operator == "-"){
+                                        displayLabel.setText(removeZeroDecimal(numA - numB));
+                                    }else if(Operator == "×"){
+                                        displayLabel.setText(removeZeroDecimal(numA * numB));
+                                    }else if(Operator == "÷"){
+                                        displayLabel.setText(removeZeroDecimal(numA / numB));
+                                    }
+                                    clearAll();
+                                }
+                            }else if("+-×÷".contains(buttonValue)){
                                 if(Operator == null){
                                     A = displayLabel.getText();
                                     displayLabel.setText("0");
